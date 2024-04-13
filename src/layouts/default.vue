@@ -493,16 +493,16 @@ header {
 }
 
 .caretRightIc {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 1rem;
+    height: 1rem;
     display: flex;
     align-items: center;
 
 }
 
 .navItemEmpty {
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 .notification {
