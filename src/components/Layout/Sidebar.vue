@@ -1,10 +1,5 @@
 <script lang="ts" setup>
-// import { ref } from 'vue'
 
-// const activeNames = ref(['1'])
-// function handleChange (val: string[]) {
-//   console.log(val)
-// }
 </script>
 
 <template>

@@ -1,93 +1,112 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
+const searchText = ref('')
+const inputBackground = ref('#eaeff6')
+const inputBoxShadow = ref('none')
+const showCloseIcon = ref(false)
 
-const searchText = ref('');
-const inputBackground = ref("#eaeff6");
-const inputBoxShadow = ref("none");
-const showCloseIcon = ref(false);   
+const visible = ref(false)
 
 function handleInputClick() {
-    inputBackground.value = "white";
-    inputBoxShadow.value = "0px 0px 10px 0px rgba(0,0,0,0.1)";
+  inputBackground.value = 'white'
+  inputBoxShadow.value = '0px 0px 10px 0px rgba(0,0,0,0.1)'
 }
 function handleInputBlur() {
-    inputBackground.value = "#eaeff6";
-    inputBoxShadow.value = "none";
+  inputBackground.value = '#eaeff6'
+  inputBoxShadow.value = 'none'
 }
-
 </script>
 
 <template>
-    <header>
-        <div :class="$style.headerLogo">
-            <a :class="$style.headerLink">
-                <img :class="$style.headerImg"
-                    src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png">
-                <span :class="$style.headerText">Drive</span>
-            </a>
-        </div>
-        <div :class="$style.headerActionContainer">
-            <div :class="$style.headerSearch">
-                <form :class="$style.headerSearchForm" @click="handleInputClick"
-                    :style="{ backgroundColor: inputBackground, boxShadow: inputBoxShadow }" @blur="handleInputBlur">
-                  
-                    <div :class="$style.headerSearchLeft">
-                        <div :class="[$style.headerSearchIcon, $style.headerCommonIc]">
-                            <el-icon :size="24">
-                                <Search />
-                            </el-icon>
-                        </div>
-                        <input id="" type="text" name="" :class="$style.headerSearchInput"
-                            placeholder="Tìm trong drive" @click="handleInputClick"
-                                :style="{ backgroundColor: inputBackground }" @blur="handleInputBlur"
-                                v-model="searchText">
-                    </div>
-                    <div :class="$style.headerSearchRight">
-                        <div :class="[$style.headerCloseIcon, $style.headerCommonIc]" v-if="showCloseIcon">
-                            <el-icon :size="24">
-                                <Close />
-                            </el-icon>
-                        </div>
-                        <div :class="[$style.headerFilterIcon, $style.headerCommonIc]">
-                            <el-icon :size="24">
-                                <Operation />
-                            </el-icon>
-                        </div>
-                    </div>
-                </form>
+  <header>
+    <div :class="$style.headerLogo">
+      <a :class="$style.headerLink">
+        <img
+          :class="$style.headerImg"
+          src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_48dp.png"
+        >
+        <span :class="$style.headerText">Drive</span>
+      </a>
+    </div>
+    <div :class="$style.headerActionContainer">
+      <div :class="$style.headerSearch">
+        <form
+          :class="$style.headerSearchForm" :style="{ backgroundColor: inputBackground, boxShadow: inputBoxShadow }"
+          @click="handleInputClick" @blur="handleInputBlur"
+        >
+          <div :class="$style.headerSearchLeft">
+            <div :class="[$style.headerSearchIcon, $style.headerCommonIc]">
+              <el-icon :size="24">
+                <Search />
+              </el-icon>
             </div>
-            <div :class="$style.headerTaskBtn">
-                <el-tooltip content="Hỗ trợ" placement="bottom" effect="dark">
-                    <div :class="[$style.headerQuestionIc, $style.headerLeftIc]">
-                        <el-icon :size="24">
-                            <QuestionFilled />
-                        </el-icon>
-                    </div>
-                </el-tooltip>
-                <el-tooltip content="Cài đặt" placement="bottom" effect="dark">
-                    <div :class="[$style.headerSettingIc, $style.headerLeftIc]">
-                        <el-icon :size="24">
-                            <Setting />
-                        </el-icon>
-                    </div>
-                </el-tooltip>
-                <div :class="[$style.headerGridIc, $style.headerLeftIc]">
-                    <el-icon :size="24">
-                        <Grid />
-                    </el-icon>
+            <input
+              id="" v-model="searchText" type="text" name="" :class="$style.headerSearchInput"
+              placeholder="Tìm trong drive" :style="{ backgroundColor: inputBackground }"
+              @click="handleInputClick" @blur="handleInputBlur"
+            >
+          </div>
+          <div :class="$style.headerSearchRight">
+            <div v-if="showCloseIcon" :class="[$style.headerCloseIcon, $style.headerCommonIc]">
+              <el-icon :size="24">
+                <Close />
+              </el-icon>
+            </div>
+            <div :class="[$style.headerFilterIcon, $style.headerCommonIc]">
+              <el-icon :size="24">
+                <Operation />
+              </el-icon>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div :class="$style.headerTaskBtn">
+        <el-tooltip content="Hỗ trợ" placement="bottom" effect="dark">
+          <div :class="[$style.headerQuestionIc, $style.headerLeftIc]">
+            <el-icon :size="24">
+              <QuestionFilled />
+            </el-icon>
+          </div>
+        </el-tooltip>
+        <el-tooltip content="Cài đặt" placement="bottom" effect="dark">
+          <div :class="[$style.headerSettingIc, $style.headerLeftIc]">
+            <el-icon :size="24">
+              <Setting />
+            </el-icon>
+          </div>
+        </el-tooltip>
+        <div :class="[$style.headerGridIc, $style.headerLeftIc]">
+          <el-icon :size="24">
+            <Grid />
+          </el-icon>
+        </div>
+        <el-popover :class="$style.popPupAccount"
+          :visible="visible" placement="bottom" title="Title" :width="200"
+          content="this is content, this is content, this is content"
+        >
+          <template #reference>
+            <el-button class="m-2" @click="visible = !visible">
+              <el-tooltip
+                placement="bottom"
+                effect="dark"
+              >
+                <template #content>
+                  Tài khoản Google<br>Trương Bảo Phúc<br> truongbaophuc@gmail.com
+                </template>
+                <div :class="[$style.headerAccount, $style.headerLeftIc]">
+                  <img
+                    src="https://m.media-amazon.com/images/I/51WHgHxF5YL._AC_UF1000,1000_QL80_.jpg"
+                    alt=""
+                  >
                 </div>
-                <el-tooltip placement="bottom" effect="dark">
-                    <template #content>Tài khoản Google<br />Trương Bảo Phúc<br /> truongbaophuc@gmail.com </template>
-                    <div :class="[$style.headerAccount, $style.headerLeftIc]">
-                        <img src="https://m.media-amazon.com/images/I/51WHgHxF5YL._AC_UF1000,1000_QL80_.jpg" alt="">
-                    </div>
-                </el-tooltip>
-
-            </div>
-
-        </div>
-    </header>
+              </el-tooltip>
+            </el-button>
+          </template>
+        </el-popover>
+      </div>
+    </div>
+  </header>
 </template>
 
 <style lang="scss" module>
@@ -195,7 +214,6 @@ header {
     flex-grow: 1;
     justify-content: flex-end;
 
-
 }
 
 .headerTaskBtn>.headerCommonIc {
@@ -210,6 +228,7 @@ header {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
+    
 }
 
 .headerLeftIc {
