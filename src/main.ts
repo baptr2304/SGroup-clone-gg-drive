@@ -6,9 +6,9 @@ import router from './router'
 import './assets/main.scss'
 
 const app = createApp(Root)
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) 
   app.component(key, component)
-}
+
 app.use(router)
 
 router.isReady().then(() => {
