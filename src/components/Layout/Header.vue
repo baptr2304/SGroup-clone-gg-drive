@@ -1,16 +1,11 @@
 <script setup lang="ts">
-const filteredSuggestions = [
-    "Channel",
-    "Drive",
-    "Document",
-    "Folder",
-    "Image",
-    "Video"
-];
+import { ref } from 'vue';
+
+
 const searchText = ref('');
 const inputBackground = ref("#eaeff6");
 const inputBoxShadow = ref("none");
-const showCloseIcon = ref(false);
+const showCloseIcon = ref(false);   
 
 function handleInputClick() {
     inputBackground.value = "white";
@@ -36,13 +31,7 @@ function handleInputBlur() {
             <div :class="$style.headerSearch">
                 <form :class="$style.headerSearchForm" @click="handleInputClick"
                     :style="{ backgroundColor: inputBackground, boxShadow: inputBoxShadow }" @blur="handleInputBlur">
-                    <div :class=$style.resultBox v-show="showSuggestions && filteredSuggestions.length > 0">
-                        <ul>
-                            <li v-for="suggestion in filteredSuggestions" :key="suggestion" @click="select(suggestion)">
-                                {{ suggestion }}
-                            </li>
-                        </ul>
-                    </div>
+                  
                     <div :class="$style.headerSearchLeft">
                         <div :class="[$style.headerSearchIcon, $style.headerCommonIc]">
                             <el-icon :size="24">

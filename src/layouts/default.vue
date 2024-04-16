@@ -1,13 +1,4 @@
 <script setup lang="ts">
-// 子メニュー表示
-const parentMenu = document.querySelectorAll("._has-child > a");
-for (let i = 0; i < parentMenu.length; i++) {
-  parentMenu[i].addEventListener("click", function (e) {
-    e.preventDefault();
-    this.nextElementSibling.classList.toggle("active");
-  });
-}
-
 </script>
 
 <template>

@@ -6,10 +6,6 @@ function toggleClass() {
   isActive.value = !isActive.value
   isRotated.value = !isRotated.value;
 }
-// eslint-disable-next-line unused-imports/no-unused-vars
-function toggleBtn() {
-    isRotated.value = !isRotated.value;
-}
 </script>
 
 <template>

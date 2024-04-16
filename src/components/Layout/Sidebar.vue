@@ -24,27 +24,27 @@
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item :icon="Plus">
+        <el-dropdown-item>
           <el-icon>
             <Files />
           </el-icon>Thư mục mới</el-dropdown-item>
           <hr>
-        <el-dropdown-item :icon="CirclePlusFilled">
+        <el-dropdown-item >
           <el-icon>
             <Upload />
           </el-icon>
           Tải tệp lên
         </el-dropdown-item>
-        <el-dropdown-item :icon="CirclePlus"><el-icon>
+        <el-dropdown-item ><el-icon>
             <UploadFilled />
           </el-icon>Tải thư mục lên</el-dropdown-item>
           <hr>
-        <el-dropdown-item :icon="Check">Google tài liệu</el-dropdown-item>
-        <el-dropdown-item :icon="CircleCheck">Google trang tính</el-dropdown-item>
+        <el-dropdown-item >Google tài liệu</el-dropdown-item>
+        <el-dropdown-item >Google trang tính</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
-  <el-collapse v-model="activeNames" :class="$style.navBar" @change="handleChange">
+  <el-collapse  :class="$style.navBar" >
     <div :class="[$style.navItemHome, $style.navItem]">
       <div :class="[$style.navItemHomeIc, $style.navItemIc]">
         <!-- <el-icon>
